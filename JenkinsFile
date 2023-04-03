@@ -7,18 +7,30 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
-            steps {
+        stage('Checkout code'){
+             steps {
                
               git branch: 'main', url: 'https://github.com/Rishabh-Patel-git/CalculatorMvn.git'
-
-              
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
-
-               
+  
             }
 
-            post {
+        }
+        stage('Build') {
+            steps {
+
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+ 
+            }
+
+           
+        }
+        stage('Test'){
+             steps {
+
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+ 
+            }
+             post {
                
                 success {
                     junit '**/target/surefire-reports/TEST-*.xml'
@@ -28,3 +40,4 @@ pipeline {
         }
     }
 }
+

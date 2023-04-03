@@ -38,6 +38,13 @@ pipeline {
                 }
             }
         }
+        stage('Sonar Quality check'){
+         steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh "mvn sonar:sonar -Dsonar.token=sonar_cred_centos"}
+ 
+            }
+        }
     }
 }
 

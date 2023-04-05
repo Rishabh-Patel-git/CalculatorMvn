@@ -49,12 +49,12 @@ pipeline {
             steps{
             
                 rtUpload(
-                    serverId:""
+                    serverId:"windows_jfrog"
                     spec '''{
                         "files":[
                             {
                                 "pattern": "*.war",
-                                "target": ""
+                                "target": "jenkins_pipeline"
                             }
                         ]
                     }''',

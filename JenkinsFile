@@ -48,17 +48,17 @@ pipeline {
         stage('Artifactory'){
             steps{
             
-                rtUpload(
-                    serverId:"windows_jfrog"
-                    spec '''{
-                        "files":[
-                            {
-                                "pattern": "*.war",
-                                "target": "jenkins_pipeline"
-                            }
-                        ]
-                    }''',
-                )
+            rtUpload (
+                serverId: 'windows_jfrog',
+                spec: '''{
+                      "files": [
+                        {
+                          "pattern": "*.war",
+                          "target": "jenkins_pipeline"
+                        }
+                     ]
+                }''',
+            )
             }
         
         }

@@ -45,6 +45,23 @@ pipeline {
  
             }
         }
+        stage('Artifactory'){
+            steps{
+            
+                rtUpload(
+                    serverId:""
+                    spec '''{
+                        "files":[
+                            {
+                                "pattern": "*.war",
+                                "target": ""
+                            }
+                        ]
+                    }''',
+                )
+            }
+        
+        }
       
     }
 }
